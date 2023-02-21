@@ -1,0 +1,44 @@
+tbody>tr {
+    background-color: white;
+}
+
+thead {
+    background-color: #293462;
+    color: white;
+}
+
+.table {
+    margin: 40px;
+    width: calc(100% - 80px);
+}
+.options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 40px;
+  
+}
+.filter{
+    background-color: transparent;
+    border: 1px #293462 solid;
+    color: #293462;
+}
+.btn-c{
+    background-color: #293462;
+}
+hr{
+    margin: 0px;
+}
+.searchfiled{
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 2px #293462 solid;
+    padding: 5px;
+    font-size: 12px;
+}
+.table-actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}

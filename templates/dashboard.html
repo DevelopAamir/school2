@@ -1,0 +1,44 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+        <div class="c-row">
+            <div class="dashboardHeadCard">
+                <span class="tbold">Dashboard</span>
+                <div class="dasshbordsmcard">
+                    
+                </div>
+            </div>
+        </div>
+       
+        <div class="c-row">
+            <a href="/students" class="d-card l">
+              <div class="c-card-header"><img class="icon" src="/static/assets/Vector.svg">Students</div>
+              <div class="tb">{{dashboardData.students}}</div>
+              <div>Total Numbers of Students</div>
+            </a>
+            <a href="/staff"  class="d-card l">
+              <div class="c-card-header"><img class="icon" src="/static/assets/Vector.svg">Staff</div>
+              <div class="tb">{{dashboardData.staffs}}</div>
+              <div>Total Numbers of Staff</div>
+            </a>
+            <div class="d-card r color-card"></div>
+          </div>
+  
+          <div class="c-row">
+            <a href="/parents"  class="d-card l">
+              <div class="c-card-header"><img class="icon" src="/static/assets/Vector.svg">Parents</div>
+              <div class="tb">{{dashboardData.parents}} </div>
+              <div>Total Numbers of Parents</div>
+            </a>
+            <div class="d-card">
+              <div class="c-card-header"><img class="icon" src="/static/assets/Vector.svg">Classes</div>
+              <div class="tb">{{dashboardData.classes}} </div>
+              <div>Total Numbers of Classes</div>
+            </div>
+            <div class="d-card r">
+              <div class="c-card-header"><img class="icon" src="/static/assets/Vector.svg">Days Left</div>
+              <div class="tb">{{dashboardData.days_left}} Days </div>
+              <div>left of subscription</div>
+            </div>
+          </div>
+        </div>
+        {% endblock body %}

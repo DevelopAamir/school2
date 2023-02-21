@@ -1,0 +1,77 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/users.css">
+<div class="options">
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-sm dropdown-toggle filter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter by class
+        </button>
+        <ul class="dropdown-menu">
+            {% for class in classes %}
+                <li class="dropdown-item" id="class-filter{{class}}" onclick="filter(this.id, 'table', 'grade')">{{class.class_name}}</li>
+            {% endfor %}
+            <hr>
+            <a href="">
+                <li class="dropdown-item">Reset</li>
+            </a>
+                
+        </ul>
+    </div>
+    <div class="table-actions">
+        <input type="text" class="searchfiled" placeholder="Search.." oninput="search(this.value, 'table')">
+        <a href="/register/student/">
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm btn-c" type="button" >Add New</button>
+            </div>
+        </a>
+        
+    </div>
+  
+
+</div>
+<table class="table">
+    <thead>
+        <td>
+            S.N
+        </td>
+        <td>
+            Name
+        </td>
+        <td>
+            Class
+        </td>
+        <td>
+            Roll No
+        </td>
+        <td>
+            Status
+        </td>
+
+
+    </thead>
+    <tbody id="table">
+        {% for student in students %}
+        <tr>
+            <td>
+                {{forloop.counter }}
+            </td>
+            <td id="name">
+                {{student.first_name}}
+            </td>
+            <td id="grade">
+                {{student.section.grade}}
+            </td>
+            <td>
+                {{student.roll_no}}
+            </td>
+            <td>
+                {{student.is_active}}
+            </td>
+
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+<script src="/static/js/table.js"></script>
+{% endblock body %}

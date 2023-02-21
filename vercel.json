@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "schoolmanagement/wsgi.py",
+        "use": "@ardnt/vercel-python-wsgi",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "schoolmanagement/wsgi.py"
+        }
+    ]
+}

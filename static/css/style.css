@@ -1,0 +1,434 @@
+
+
+
+
+.c-body{
+    background-color: #DFE5F0;
+    margin: 0px;
+}
+
+.drawer{
+    width: 250px;
+    background-color: #293462;
+    min-height: 100vh;
+    margin: 0;
+    min-width: 250px;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.drawer-comp{
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items:center;
+    padding: 10px 20px;
+    
+}
+
+.dashboardHeadCard{
+    width: calc(100% - 80px);
+    transition: .5s;
+    height: 120px;
+    background: white;
+    margin: 10px 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+
+
+}
+
+.tbold{
+    color: #24C5EF;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+
+.dasshbordsmcard{
+    width: 100%;
+    background: white;
+    height: 100%;
+    margin-left: 100px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+    padding: 10px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.sub{
+    padding-left: 40px;
+}
+
+
+
+.selected{
+    background-color: rgba(217, 217, 217, 0.14);
+}
+.drawer-comp:hover{
+        
+    background-color: rgba(217, 217, 217, 0.14);
+}
+
+.drawer-comp-logo{
+    margin-right: 15px;
+}
+.drawer-header{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 20px;
+    transition: .5s;
+
+}
+.drawer-heading{
+    color: rgba(255, 255, 255, 0.853);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 30px;
+
+}
+.small-logo{
+    display: none;
+    transition: .5s;
+}
+.drawer-com-txt{
+    transition: 1s;
+}
+
+.c-body{
+    display: flex;
+    flex-direction: row;
+}
+
+.d-body{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.c-nav{
+    background-color: #FFFFFF;
+    color: #000;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+    margin-bottom: 25px;
+}
+
+.school-name{
+    font-size: 25px;
+    font-weight: 600;
+    color: #293462;
+}
+
+.d-card{
+    margin: 20px;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    height: 200px;
+    width: 100%;
+    background-color: white;
+    color: #131F60;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    padding: 20px;
+    transition: 0.3s;
+    text-decoration: none;
+    
+}
+
+.d-card:hover{
+    background-color: #293462;
+    color: white;
+    
+   
+}
+
+.l{
+    margin-left: 40px;
+    
+}
+
+.r{
+    margin-right: 40px;
+}
+
+.color-card{
+    background-color: #131F60;
+}
+
+.color-card:hover{
+    background-color: white;
+    
+}
+
+
+.c-row{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.header{
+    font-size: 33px;
+    color: #24C5EF;
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    
+    
+}
+
+.icon{
+    margin-right: 20px;
+    height: 30px;
+    transition: 0.5s;
+}
+
+.icon:hover{
+   transform: rotate(360deg);
+
+}
+
+.c-card-header{
+    display: flex;
+    align-content: stretch;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.tb{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+
+
+.dropdowntrail{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    .c-row{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        
+    }
+
+    .drawer-com-txt{
+        font-size: 5px;
+        font-weight: 100;
+        opacity:0%;
+        transition: .5s;
+        display: none;
+        
+
+    }
+    .dropdowntrail{
+        display: none;
+    }
+    
+    .small-logo{
+        display: block;
+    }
+    .large-logo{
+        display: none;
+        transition: .5s;
+    }
+    .drawer-header{
+        
+        margin: 25px 20px;
+    
+    }
+
+    .drawer-heading{
+        color: rgba(255, 255, 255, 0.819);
+        font-size: 15px;
+        font-weight: 700;
+        flex-direction: row;
+        justify-content: center;
+        align-content: space-around;
+        align-items:center;
+        
+    
+    }
+
+    .l{
+        margin-left: 20px;
+        
+    }
+    
+    .r{
+        margin-right: 20px;
+    }
+    .drawer{
+        width: 0px;
+        background-color: #293462;
+        min-height: 100vh;
+        margin: 0;
+        min-width: 100px;
+        transition: 1s;
+    }
+    .drawer-comp{
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: space-around;
+        align-items:center;
+        margin: 10px 20px;
+        padding: 15px;
+        
+        
+    }
+    .drawer-comp-logo{
+        margin: 0px;
+    }
+    .dashboardHeadCard{
+        width:100%;
+        margin: 20px;
+    }
+    
+}
+
+@media only screen and (max-width: 1000px) {
+    
+    .c-row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        
+    }
+
+    .d-card{
+        width: 90%
+        
+    }
+
+    .l{
+        margin-left: 20px;
+        
+    }
+    
+    .r{
+        margin-right: 20px;
+    }
+    .drawer{
+        width: 0px;
+        background-color: #293462;
+        min-height: 100vh;
+        margin: 0;
+        min-width: 100px;
+        transition: 1s;
+    }
+    .dashboardHeadCard{
+        width: 90%;
+        margin: 20px;
+        margin-top: 22px;
+        margin-bottom: 22px;
+       
+    }
+}
+
+@media only screen and (max-width: 592px) {
+    
+    .c-row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        
+    }
+
+    .d-card{
+        
+        width: 90%;
+        
+    }
+
+    .l{
+        margin-left: 20px;
+        
+    }
+    
+    .r{
+        margin-right: 20px;
+    }
+    .drawer{
+        width: 80px;
+        background-color: #293462;
+        min-height: 100vh;
+        margin: 0;
+        min-width: 0px;
+        transition: 1s;
+    }
+    .school-name{
+        font-size: 20px;
+        color: #293462;
+    }
+
+    .c-nav{
+        padding-left: 20px;
+    }
+    .header{
+        margin: 10px 20px;
+        font-size: 25px;
+    }
+    
+    .drawer-comp{
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: space-around;
+        align-items:center;
+        margin: 10px;
+        padding: 12px;
+        
+        
+    }
+    .drawer-comp:hover{
+        
+        background-color: rgba(217, 217, 217, 0.14);
+    }
+    .drawer-comp-logo{
+        margin: 0px;
+    }
+    .drawer-heading{
+        display: none;
+    }
+}
+
+
+
+

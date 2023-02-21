@@ -1,0 +1,59 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/users.css">
+<div class="options">
+    <div class="btn-group">
+        
+    </div>
+    <div class="table-actions">
+        <input type="text" class="searchfiled" placeholder="Search"  oninput="search(this.value, 'table')">
+        <a href="/register/parents/">
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm btn-c" type="button" >Add New</button>
+            </div>
+        </a>
+        
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <td>
+            S.N
+        </td>
+        <td>
+            Name
+        </td>
+
+        <td>
+           Username
+        </td>
+        <td>
+            Status
+        </td>
+
+
+    </thead>
+    <tbody id="table">
+        {% for parent in parents %}
+        <tr>
+            <td>
+                {{forloop.counter }}
+            </td>
+            <td>
+                {{parent.parent_name}}
+            </td>
+
+            <td>
+                {{parent.user}}
+            </td>
+            <td>
+                {{parent.is_active}}
+            </td>
+
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+<script src="/static/js/table.js"></script>
+{% endblock body %}

@@ -1,0 +1,46 @@
+form{
+    background-color: white;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form > p{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+}
+
+form > p > label{
+    font-size: 16px;
+    font-weight: 700;
+    color: #293462;
+}
+
+form> p> input{
+    border-radius: 5px;
+    border: 2px grey solid;
+    padding: 3px;
+}
+
+form> p> input[type=checkbox]{
+    border-radius: 5px;
+    border: 2px #293462 solid;
+    padding: 3px;
+}
+
+form> p> select{
+    border-radius: 5px;
+    border: 2px grey solid;
+    padding: 3px;
+}
+
+.header-d{
+    padding: 10px;
+    width: 100%;
+    font-size: 30px;
+    color: #293462;
+}
