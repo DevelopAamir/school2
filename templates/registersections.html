@@ -1,0 +1,41 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% for message in messages %}
+<div class="alert alert-secondary" role="alert">
+   {{message}}
+  </div>
+{% endfor %}
+<form action="" method="post" id="form">
+    {{form.as_p}}
+    <input type="hidden" name="school" id="id_school" value="{{school.id}}">
+    {% csrf_token %}
+    <input type="submit">
+</form>
+<script>
+    var doc = document.getElementById('id_grade')
+    var child = document.createElement('option');
+    child.value = doc.value
+    child.innerHTML = doc.options[doc.selectedIndex].text
+
+    doc.replaceChildren()
+    doc.appendChild(child)
+    fetch('/gradesapi').then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+            data.forEach(ele => {
+                var childnode = document.createElement('option');
+                childnode.value = ele['id']
+                childnode.innerHTML = ele['name']
+                if(childnode.value != child.value){
+                    doc.appendChild(childnode)
+                }
+                
+            })
+        });
+
+</script>
+<script src="/static/js/forms.js"></script>
+
+{% endblock body %}

@@ -1,0 +1,88 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/users.css">
+<div class="options">
+
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle filter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter by Grade
+            </button>
+            <ul class="dropdown-menu">
+                {% for class in grades %}
+                    <li class="dropdown-item" id="class-filter{{class}}" onclick="filter(this.id, 'table', 'grade')">{{class.class_name}}</li>
+                {% endfor %}
+                <hr>
+                <a href="">
+                    <li class="dropdown-item">Reset</li>
+                </a>
+                    
+            </ul>
+        </div>
+
+   
+    <div class="table-actions">
+        <input type="text" class="searchfiled" placeholder="Search.."  oninput="search(this.value, 'table')">
+        <a href="/resultbuilder" target=”_blank”>
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm btn-c" type="button" >Add New</button>
+            </div>
+        </a>
+        
+    </div>
+    
+
+</div>
+<table class="table">
+    <thead>
+        <td>
+            S.N
+        </td>
+        <td>
+           Title
+        </td>        
+        <td>
+            Class
+        </td>
+        <td>
+            Date Created
+        </td>
+        <td>
+            Status
+        </td>
+        <td>
+            Actions
+        </td>
+
+    </thead>
+    <tbody id="table">
+        {% for result in results %}
+        <tr>
+            <td>
+                {{forloop.counter }}
+            </td>
+            <td>
+                {{result.name}}
+            </td>
+
+            <td id="grade">
+                {{result.grade}}
+            </td>
+            <td>
+                {{result.date_created}}
+            </td>
+            <td>
+                {{result.is_active}}
+            </td>
+            <td>
+                <a href="/resultbuilder/{{result.id}}/{{result.grade}}">
+                    <button>Update</button>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+<script src="/static/js/table.js"></script>
+{% endblock body %}

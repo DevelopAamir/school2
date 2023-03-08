@@ -10,6 +10,7 @@ form{
 form > p{
     display: flex;
     flex-direction: column;
+    justify-content: end;
     width: 50%;
     padding: 10px;
 }
@@ -24,6 +25,18 @@ form> p> input{
     border-radius: 5px;
     border: 2px grey solid;
     padding: 3px;
+}
+
+form> input[type=submit]{
+    border: none;
+    height: 40px;
+    width: calc(50% - 40px);
+    margin: 15px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    background-color: #293462;
+    color: white;
 }
 
 form> p> input[type=checkbox]{

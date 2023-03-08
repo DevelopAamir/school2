@@ -30,6 +30,9 @@
         <td>
             Status
         </td>
+        <td>
+            Action
+        </td>
 
 
     </thead>
@@ -48,6 +51,11 @@
             </td>
             <td>
                 {{parent.is_active}}
+            </td>
+            <td>
+                <a href="/register/parents?id={{parent.id}}">
+                    <button>Update</button>
+                </a>
             </td>
 
         </tr>

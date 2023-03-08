@@ -5,7 +5,10 @@ var is_active = FieldSelect('id_is_active','form')
 is_active.remove()
 
 var user = FieldSelect('id_user','form')
-user.remove()
+if(user!= null){
+    user.remove()
+}
+
 
 var student_dob = FieldSelect('id_student_dob','form')
 if(student_dob != null){
@@ -23,8 +26,10 @@ if(student_dob != null){
 
 var grade = document.getElementById('id_grade')
 filterSection(grade)
-grade.setAttribute('onchange', 'filterSection(this)')
+
+
 if(grade != null){
+    grade.setAttribute('onchange', 'filterSection(this)')
     grade.childNodes.forEach(
         ele=>{
             if(ele.nodeName == 'OPTION'){
@@ -51,8 +56,9 @@ function FieldSelect(id, parent_id) {
 
 function filterSection(grade){
     var section = document.getElementById('id_section')
+    var selected = section.value;
     var child = document.createElement('option');
-    child.innerHTML = '---------';
+    child.innerHTML =  '---------';
     child.setAttribute('selected', '');
     section.replaceChildren();
     section.appendChild(child)
@@ -70,6 +76,10 @@ function filterSection(grade){
             var child = document.createElement('option');
             child.value = ele['id']
             child.innerHTML = ele['name']
+            console.log(selected)
+            if(ele['id'] == selected){
+                child.setAttribute('selected','')
+            }
             section.appendChild(child)
         })
     });

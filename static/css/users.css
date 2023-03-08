@@ -30,9 +30,10 @@ hr{
     margin: 0px;
 }
 .searchfiled{
+    width: 667px;
     margin-right: 5px;
-    border-radius: 5px;
-    border: 2px #293462 solid;
+    border-radius: 4px;
+    border: 2px #ffffff solid;
     padding: 5px;
     font-size: 12px;
 }

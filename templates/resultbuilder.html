@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Builder - School Management</title>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/static/css/results.css">
+
+    <link rel="stylesheet" href="/static/css/users.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/resultsetting.css">
+
+
+</head>
+
+<body>
+    <nav class="nav">
+        <h3>
+            {{result_info.name}}
+        </h3>
+        <div>
+            <input type="text" name="" id="" placeholder="Search students">
+            <a onclick="swithsetting()" class="material-symbols-outlined">
+                settings
+            </a>
+        </div>
+
+    </nav>
+    <div class="top-menu">
+        <div class="add-sub-btn" onclick="addStudent()">
+            <span class="add-icon">
+                <span class="material-symbols-outlined">
+                    Add
+                </span>
+            </span>
+
+                <p>
+                    Add<br>Student
+                </p>
+
+
+
+        </div>
+        <div class="filters">
+            <b>Filters : </b>
+            <select name="" id="" onchange="onfilterbysection(this)">
+                <option selected value="">Select Sections</option>
+                {% for section in sections %}
+                <option value="{{section.id}}">{{section}}</option>
+                {% endfor %}
+
+            </select>
+
+
+
+
+        </div>
+        <div class="actions">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_8zfew9yc.json" background="transparent"
+                speed="2" style="width: 70px; height: 70px;" mode="bounce" loop></lottie-player>
+            <button>Export Ledger</button>
+            <button onclick="Result.con()">Export Results</button>
+        </div>
+    </div>
+    <div class="setting-part" id="settings-part">
+        <div class="setting-body">
+            <div class="AddSubject">
+                <h2 class="h2">Add Subject</h2>
+                <input type="text" placeholder="Enter Subject Name*" required id="add-sub-name" oninput="on_add_sub_change()">
+                <input type="number" placeholder="Enter Full Marks*" required  id="add-sub-full-marks"  oninput="on_add_sub_change()">
+                <input type="text" placeholder="Enter Pass Marks*" required id="add-sub-pass-marks"  oninput="on_add_sub_change()">
+                <input type="text" placeholder="Enter Theory Full Marks*" required id="add-sub-theory-full-marks"  oninput="on_add_sub_change()">
+                <input type="text" placeholder="Enter Theory Pass Marks*" required id="add-sub-theory-pass-marks"  oninput="on_add_sub_change()">
+                <input type="text" placeholder="Enter Practical Full Marks*" required id="add-sub-practical-full-marks"  oninput="on_add_sub_change()">
+                <input type="text" placeholder="Enter Practical Pass Marks*" required id="add-sub-practical-pass-marks"  oninput="on_add_sub_change()">
+                <button onclick="addSubject()" disabled id="add-subject-btn">Add Subject</button>
+
+            </div>
+            <div class="manage-subject">
+                <h2 class="h2">Manage Subject</h2>
+                <table class="table">
+                    <thead>
+                        <td>
+                            SN
+                        </td>
+                        <td>
+                            Name
+                        </td>
+
+                        <td>
+                            Full Marks
+                        </td>
+                        <td>
+                            Pass Marks
+                        </td>
+                        <td>
+                            Full Marks - Theory
+                        </td>
+                        <td>
+                            Pass Marks - Theory
+                        </td>
+                        <td>
+                            Full Marks - Practical
+                        </td>
+                        <td>
+                            Pass Marks - Practical
+                        </td>
+                        <td>
+                            Actions
+                        </td>
+
+
+                    </thead>
+                    <tbody id="subjects">
+                        {% for parent in parents %}
+                        <tr>
+                            <td>
+                                {{forloop.counter }}
+                            </td>
+                            <td>
+                                {{parent.parent_name}}
+                            </td>
+
+                            <td>
+                                {{parent.user}}
+                            </td>
+                            <td>
+                                {{parent.is_active}}
+                            </td>
+                            <td>
+                                <a href="/register/parents?id={{parent.id}}">
+                                    <button>Update</button>
+                                </a>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-marks">
+        <div class="top-header">
+            <div class="top-header-actions">
+                <div class="class-section">
+                    <b>Class : {{grade}}</b>
+                    <b><b>Sections :</b> <b id="section_view">All</b></b>
+                </div>
+                <div class="class-section m-t-2">
+                    <b>Students : <b id="total-student"></b></b>
+                </div>
+            </div>
+            <div class="marks-type">
+                <b>TH</b>
+                <b>PR</b>
+            </div>
+            <div class="subjects-space" id="subjects-space"></div>
+
+            <div class="totalsubjects">
+                <b>Total<br>Subjects</b>
+                <h2 id="subject-count">0</h2>
+            </div>
+        </div>
+        <div id="resluts-place"></div>
+    </div>
+    <div class="dialogue-place" style="display:none" id="dialogue">
+        <div class="dialogue-box" >
+            <b class="dialogue-title">You are about to delete this Student?</b>
+            <p>All the records will be permenently removed and you won't be able to see them again.</p>
+            <div class="dialogue-actions">
+                <button class="cancel-button" id="cancel-btn-dialogue">cancel</button>
+                <button class="delete-btn"  id="delete-btn-dialogue">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-place" style="display:none" id="update-dialogue">
+        <div class="dialogue-box d-update" >
+            <b class="dialogue-title">Update Student Information</b>
+            <p class="m-0-c">This Update will only affect {{result_info.name}}.</p>
+            <input type="text" placeholder="Update Name" id="student-name-update">
+            <div class="dialogue-actions">
+                <button class="cancel-button" id="cancel-update-btn-dialogue">cancel</button>
+                <button class="update-btn"  id="update-btn-dialogue">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialogue-place" style="display:none" id="add-student-dialogue">
+        <div class="dialogue-box d-update" >
+            <b class="dialogue-title">Update Student Information</b>
+            <p class="m-0-c">This Update will only affect {{result_info.name}}.</p>
+            <select id="student-add-select"></select>
+            <div class="dialogue-actions">
+                <button class="cancel-button" id="cancel-add-btn-dialogue">cancel</button>
+                <button class="update-btn"  id="add-btn-dialogue">Add</button>
+            </div>
+        </div>
+    </div>
+   
+
+</body>
+<script>
+</script>
+<script src="/static/js/results.js"></script>
+<script src="/static/js/resultsettings.js"></script>
+<script src="/static/js/resultsScripting.js"></script>
+<script>
+    const resultsheet = new ResultsSheet()
+    data = JSON.parse('{{results|safe}}')
+    if (data['null'] == true) {
+        init()
+    } else {
+
+        resultsheet.initinstance(data)
+    }
+
+    uiInit(resultsheet)
+    getSubjects(resultsheet)
+    document.getElementById('total-student').innerText = document.getElementById('resluts-place').firstChild.children.length
+
+    function init() {
+        subjects = []
+        students = []
+        {% for student in students %}
+        var student = new Student()
+        student.init('{{student}}', '{{student.roll_no}}', '{{student.id}}', '{{student.section.id}}')
+        students.push(student)
+        {% endfor %}
+
+        {% for subject in subjects %}
+        var subject = new Subject()
+        subject.init('{{subject}}', 100, 40, 25, 8, 75, 32, '{{subject.id}}')
+        subjects.push(subject)
+        {% endfor %}
+
+        resultsheet.init(subjects, students)
+
+    }
+
+
+    function onupdate(student_id, subject_id, value, type) {
+        resultsheet.update(student_id, subject_id, value, type)
+        sendUpdate(resultsheet, '{{ csrf_token }}')
+    }
+
+
+
+    function onfilterbysection(value) {
+        var result_place = document.getElementById('resluts-place').firstChild
+        var sectionview = document.getElementById("section_view")
+        sectionview.innerText = value.value != "" ? value.options[value.selectedIndex].text : "All"
+        var numb = 0
+        result_place.childNodes.forEach((child) => {
+            if (child.nodeName == "DIV") {
+                if (value.value != child.getAttribute("section") && value.value != "") {
+                    child.style.display = "none"
+                } else {
+                    child.style.display = ""
+                    numb++;
+                }
+            }
+
+        })
+        document.getElementById('total-student').innerText = numb
+
+    }
+
+    function updateSubjects(subject_id, field_name, value) {
+        resultsheet.updateSubject(subject_id, field_name, value)
+        uiInit(resultsheet)
+        sendUpdate(resultsheet, '{{ csrf_token }}')
+    }
+
+    function addSubject(){
+        var name =  document.getElementById("add-sub-name").value
+        var full_marks =  document.getElementById("add-sub-full-marks").value
+        var pass_marks =  document.getElementById("add-sub-pass-marks").value
+        var theory_marks =  document.getElementById("add-sub-theory-full-marks").value
+        var theory_pass_marks =  document.getElementById("add-sub-theory-pass-marks").value
+        var practical_marks =  document.getElementById("add-sub-practical-full-marks").value
+        var practical_pass_marks =  document.getElementById("add-sub-practical-pass-marks").value
+
+
+
+        resultsheet.addSubject(name,full_marks, pass_marks, practical_marks,practical_pass_marks,theory_marks,theory_pass_marks )
+        document.getElementById("add-sub-name").value = ""
+        on_add_sub_change()
+        uiInit(resultsheet)
+        getSubjects(resultsheet)
+        sendUpdate(resultsheet, '{{ csrf_token }}')
+    
+    }
+
+    function deleteSubject(id){
+        var choice = confirm("Are you sure, Want to delete ?")
+        if(choice){
+            resultsheet.deleteSubject(id)
+            uiInit(resultsheet)
+            getSubjects(resultsheet)
+            sendUpdate(resultsheet, '{{ csrf_token }}')
+        }
+        
+     
+    }
+
+    function upSubject(index){
+        if(index > 0){
+            resultsheet.subjectmove(index,index-1)
+            uiInit(resultsheet)
+            getSubjects(resultsheet)
+            sendUpdate(resultsheet, '{{ csrf_token }}')
+        }
+        
+    }
+
+    function downSubject(index){
+        resultsheet.subjectmove(index,index+1)
+        uiInit(resultsheet)
+        getSubjects(resultsheet)
+        sendUpdate(resultsheet, '{{ csrf_token }}')
+ 
+    }
+
+    function on_add_sub_change(){
+        var name =  document.getElementById("add-sub-name").value
+        var full_marks =  document.getElementById("add-sub-full-marks").value
+        var pass_marks =  document.getElementById("add-sub-pass-marks").value
+        var theory_marks =  document.getElementById("add-sub-theory-full-marks").value
+        var theory_pass_marks =  document.getElementById("add-sub-theory-pass-marks").value
+        var practical_marks =  document.getElementById("add-sub-practical-full-marks").value
+        var practical_pass_marks =  document.getElementById("add-sub-practical-pass-marks").value
+        if(name != '' && full_marks != '' && pass_marks != '' && theory_marks != '' && theory_pass_marks != '' && practical_marks != '' && practical_pass_marks != ''){
+            document.getElementById('add-subject-btn').removeAttribute('disabled')
+        }else{
+            document.getElementById('add-subject-btn').setAttribute('disabled', '')
+        }
+    }
+    function deleteStudent(id){
+        resultsheet.deleteStudent(id, '{{ csrf_token }}')
+
+    }
+
+    function updateStudent(id){
+        resultsheet.updateStudent(id, '{{ csrf_token }}')
+
+    }
+
+    function addStudent(){
+        students = []
+        {% for student in students %}
+            var student = new Student()
+            student.init('{{student}}', '{{student.roll_no}}', '{{student.id}}', '{{student.section.id}}')
+            students.push(student)
+        {% endfor %}
+
+        resultsheet.addStudent(students)
+    }
+    
+
+</script>
+
+</html>

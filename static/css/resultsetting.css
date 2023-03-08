@@ -1,0 +1,74 @@
+.AddSubject{
+    width: 30%;
+    height: 100%;
+}
+
+.manage-subject{
+    width: 100%;
+    height: 100%;
+}
+
+.setting-body{
+
+    display: flex;
+    padding: 15px;
+
+}
+
+.table{
+    margin: 0px;
+    width: calc(100% );
+}
+
+td{
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+td> input{
+    border: none;
+    outline: none;
+    width: 80px;
+}
+
+td:nth-child(2){
+    width: 100px;
+}
+
+.h2{
+    font-size: 25px;
+    font-weight: 700;
+    color: #293462;
+    margin-bottom: 20px;
+}
+
+.AddSubject{
+    display: flex;
+    flex-direction: column;
+}
+
+.AddSubject > input{
+    margin-bottom: 10px;
+    margin-right: 50px;
+    max-width: 300px;
+    height: 23px;
+    border: 2px solid #dadada;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    
+}
+.AddSubject > input:focus{
+    outline: none !important;
+    border-color: #889ce9;
+
+}
+
+button{
+    max-width: 300px;
+    margin-right: 50px;
+}
+
+.table{
+    margin: 0px;
+}

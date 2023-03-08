@@ -41,10 +41,16 @@
             Class
         </td>
         <td>
+            Section
+        </td>
+        <td>
             Roll No
         </td>
         <td>
             Status
+        </td>
+        <td>
+            Action
         </td>
 
 
@@ -61,11 +67,19 @@
             <td id="grade">
                 {{student.section.grade}}
             </td>
+            <td id="section">
+                {{student.section}}
+            </td>
             <td>
                 {{student.roll_no}}
             </td>
             <td>
                 {{student.is_active}}
+            </td>
+            <td>
+                <a href="/register/student?id={{student.id}}">
+                    <button>Update</button>
+                </a>
             </td>
 
         </tr>

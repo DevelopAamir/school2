@@ -1,0 +1,78 @@
+{% extends 'dashboardskeleton.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/users.css">
+<div class="options">
+
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle filter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{selected_grade}}
+            </button>
+            <ul class="dropdown-menu">
+                {% for grade in grades %}
+                <a href="/section/{{grade.id}}"> <li class="dropdown-item">{{grade}}</li></a>
+               
+            {% endfor %}
+            </ul>
+        </div>
+
+   
+    <div class="table-actions">
+        <input type="text" class="searchfiled" placeholder="Search.."  oninput="search(this.value, 'table')">
+        <a href="/registersection">
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm btn-c" type="button" >Add New</button>
+            </div>
+        </a>
+        
+    </div>
+    
+
+</div>
+<table class="table">
+    <thead>
+        <td>
+            S.N
+        </td>
+        <td>
+            Class
+        </td>
+        <td>
+            Name
+        </td>
+
+        <td>
+            Status
+        </td>
+        <td>
+            Actions
+        </td>
+
+    </thead>
+    <tbody id="table">
+        {% for section in sections %}
+        <tr>
+            <td>
+                {{forloop.counter }}
+            </td>
+            <td>
+                {{section.grade}}
+            </td>
+            <td id="section_name">
+                {{section.section_name}}
+            </td>
+            <td>
+                {{section.is_active}}
+            </td>
+            <td>
+                <a href="/registersection?id={{section.id}}">
+                    <button>Update</button>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+<script src="/static/js/table.js"></script>
+{% endblock body %}

@@ -1,0 +1,418 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color:  white;
+    color:#293462;
+    padding: 15px;
+
+}
+
+.nav>h3{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.nav > div{
+    display: flex;
+    align-items: center;
+}
+
+.nav > div > input{
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    width: 714px;
+    border: 2px solid #dadada;
+}
+
+.material-symbols-outlined{
+    color: #293462;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.top-menu{
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.329);
+    margin: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+
+.add-sub-btn{
+    background-color: #293462;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.add-sub-btn > .add-icon{
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.add-sub-btn >  p{
+    text-align: center;
+    color: white;
+    margin-left: 10px;
+}
+
+.filters{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.filters > select{
+    border:  2px solid #eee;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.actions{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+}
+
+.actions > button{
+    padding: 8px;
+    font-size: small;
+    background-color:#293462;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin-right: 20px;
+    height: 40px;
+}
+
+.scroll-marks{
+    overflow-x: scroll;
+    min-height: 100vh;
+}
+.top-header{
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.329);
+    margin: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: fit-content;
+    min-width: calc(100% - 30px)
+}
+
+
+.class-section{
+    background-color: #293462;
+    border-radius: 5px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100px;
+}
+
+.m-t-2{
+    margin-top: 2px;
+}
+
+.class-section > b{
+    overflow-x:hidden;
+    overflow-y: hidden;
+    width: 100px;
+    height: 15px;
+    font-size: 12px;
+    color: white;
+}
+
+.totalsubjects{
+    height: 100%;
+    width: 150px;
+    background-color: #293462;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.updateDate{
+    padding: 8px;
+    height: calc(100% - 16px);
+    width: 131px;
+}
+.updateDate > b{
+    font-size: 15px;
+}
+.updateDate > button{
+    margin: 0;
+    background-color: white;
+    color:#293462;
+    font-size: 12px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+}
+.updateDate > h2{
+    font-size: 12px;
+}
+
+.subjects-space{
+    width: 100%;
+
+}
+
+.totalsubjects > b{
+    text-align: center;
+}
+
+.subjects-space{
+    display: flex;
+    height: 100%;
+}
+
+.subject-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: grey;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #ebebee63;
+    border-radius: 5px;
+    height:calc(100% - 20px);
+    width: 70px;
+    text-align: start;
+}
+
+
+.subject-card > b{
+    font-size: 12px;
+    height: 15px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.subject-card > span{
+    font-size: 12px;
+    margin-bottom: 2px;
+    
+}
+
+.result-card{
+    height: 80px;
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.329);
+    display: flex;
+    margin: 15px;
+    border-radius: 5px;
+    min-width: calc(100% - 30px);
+    width: fit-content;
+}
+
+.student-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    width: 100px;
+}
+
+.student-info> b{
+    font-size: 15px;
+    margin-bottom: 5px;
+    width: 100px;
+
+}
+
+.student-info > span{
+    font-size: 12px;
+    height: 14px;
+    overflow: hidden;
+}
+
+.marks-type{
+    height:calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    background-color: #d5d9e7a6;
+    padding: 10px;
+    justify-content: space-around;
+    margin-left: 10px;
+    color:#293462;
+}
+
+
+.marks-entry{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.number-chip{
+    height: calc(100% - 20px);
+    width: 70px;
+    padding: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.number-chip> input{
+    width: 70px;
+    height: 35px;
+    margin: 2px;
+    border-radius: 5px;
+    background-color: #d5d9e7a6;
+    border: none;
+    text-align: center;
+}
+
+.toast{
+    position: absolute;
+    margin-bottom: 20px;
+    top: 0;
+
+
+}
+
+.setting-part{
+    margin-top: 20px;
+    background-color: #eee;
+    margin: 15px;
+    border-radius: 5px;
+    transition: .5s ease-in-out;
+    height: 0px;
+    overflow-y: scroll;
+}
+.dialogue-place{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transition: .3s;
+}
+.dialogue-box{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(128, 128, 128, 0.336) 0px 1px 20px 4px;
+
+    position: fixed;
+    max-width: 500px;
+    margin-top: calc(50vh - 125px);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .3s;
+}
+
+.dialogue-box > p{
+    font-size: 16px;
+    padding: 20px;
+    padding-top: 0px;
+    color: rgb(139, 139, 139);
+}
+
+.dialogue-title{
+    font-size: 20px;
+    color: #293462;
+    padding: 20px;
+}
+
+.dialogue-actions{
+    display: flex;
+    justify-content: end;
+    background-color: rgba(238, 238, 238, 0.747);
+    padding: 15px;
+}
+.cancel-button{
+    margin-right: 8px;
+    border: none;
+    padding: 8px;
+    background-color: white;
+    color:#293462
+}
+
+
+.delete-btn{
+    background-color: rgb(231, 16, 16);
+    border: none;
+    margin-right: 0px;
+}
+.d-update{
+    max-width: 300px;
+}
+
+
+.dialogue-box > input {
+    max-width: 300px;
+    height: 23px;
+    border: 2px solid #dadada;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    margin: 20px;
+}
+.dialogue-box > select {
+    max-width: 300px;
+
+    border: 2px solid #dadada;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    margin: 20px;
+}
+.d-update > p{
+    padding: 5px 20px;
+}
+
+.update-btn{
+    background-color: rgb(4, 209, 4);
+    border: none;
+    margin-right: 0px;
+}
