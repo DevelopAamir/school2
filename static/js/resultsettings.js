@@ -1,10 +1,11 @@
-function swithsetting() {
+function swithsetting(btn) {
     var settingspart = document.getElementById('settings-part')
     if (settingspart.style.height != "500px") {
         settingspart.style.height = "500px"
-
+        btn.innerHTML = 'Close'
     } else {
         settingspart.style.height = "0px"
+        btn.innerHTML = 'Subjects'
     }
 }
 
@@ -44,10 +45,10 @@ function getSubjects(resultSheet) {
             </td>
             <td>
                 <span class="material-symbols-outlined"onclick="upSubject(${index})">
-                    fitbit_arrow_upward
+                    arrow_upward
                 </span>
                 <span class="material-symbols-outlined"onclick="downSubject(${index})">
-                    fitbit_arrow_downward
+                    arrow_downward
                 </span>
                 <span class="material-symbols-outlined" onclick="deleteSubject(${element.id})">
                     delete

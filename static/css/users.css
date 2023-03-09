@@ -2,6 +2,11 @@ tbody>tr {
     background-color: white;
 }
 
+body {
+    font-family: "Inter", sans-serif;
+  
+}
+
 thead {
     background-color: #293462;
     color: white;
@@ -20,7 +25,7 @@ thead {
 }
 .filter{
     background-color: transparent;
-    border: 1px #293462 solid;
+    border: 1px #ffffff solid;
     color: #293462;
 }
 .btn-c{

@@ -46,186 +46,231 @@ class ResultsSheet {
 
     }
 
-    initinstance(data){
-        console.log(data)
+    initinstance(data) {
+   
         var subjects = data['subjects']
         var results = data['results']
 
-        subjects.forEach(subject=>{
+        subjects.forEach(subject => {
             var subject_new = new Subject()
-            subject_new.init(subject['name'], subject['full_marks'], subject['pass_marks'],subject['practical_marks'],subject["practical_pass_marks"],subject['theory_marks'],subject["theory_pass_marks"],subject['id'])
-        this.subjects.push(subject_new)
+            subject_new.init(subject['name'], subject['full_marks'], subject['pass_marks'], subject['practical_marks'], subject["practical_pass_marks"], subject['theory_marks'], subject["theory_pass_marks"], subject['id'])
+            this.subjects.push(subject_new)
         })
 
-        results.forEach(result=>{
+        results.forEach(result => {
             var result_new = new Result()
             result_new.initinstance(result)
             this.results.push(result_new)
         })
     }
 
-    updateSubject(subject_id, field_name,value){
+    updateSubject(subject_id, field_name, value) {
         this.subjects.forEach(subject => {
-            if(subject.id == subject_id){
-                if(field_name == 'name'){
+            if (subject.id == subject_id) {
+                if (field_name == 'name') {
                     subject.name = value
-                }else if(field_name == 'full_marks'){
+                } else if (field_name == 'full_marks') {
                     subject.full_marks = value
-                }else if(field_name == 'pass_marks'){
+                } else if (field_name == 'pass_marks') {
                     subject.pass_marks = value
                 }
-                else if(field_name == 'theory_marks'){
+                else if (field_name == 'theory_marks') {
                     subject.theory_marks = value
-                } else if(field_name == 'theory_pass_marks'){
+                } else if (field_name == 'theory_pass_marks') {
                     subject.theory_pass_marks = value
-                } else if(field_name == 'practical_marks'){
+                } else if (field_name == 'practical_marks') {
                     subject.practical_marks = value
-                }  else if(field_name == 'practical_pass_marks'){
+                } else if (field_name == 'practical_pass_marks') {
                     subject.practical_pass_marks = value
-                }           
+                }
             }
         });
-        this.results.forEach(result =>{
-            result.marks.forEach(mark=>{
-                if(mark.subject.id == subject_id){
-                    if(field_name == 'name'){
+        this.results.forEach(result => {
+            result.marks.forEach(mark => {
+                if (mark.subject.id == subject_id) {
+                    if (field_name == 'name') {
                         mark.subject.name = value
-                    }else if(field_name == 'full_marks'){
+                    } else if (field_name == 'full_marks') {
                         mark.subject.full_marks = value
-                    }else if(field_name == 'pass_marks'){
+                    } else if (field_name == 'pass_marks') {
                         mark.subject.pass_marks = value
                     }
-                    else if(field_name == 'theory_marks'){
+                    else if (field_name == 'theory_marks') {
                         mark.subject.theory_marks = value
-                    } else if(field_name == 'theory_pass_marks'){
+                    } else if (field_name == 'theory_pass_marks') {
                         mark.subject.theory_pass_marks = value
-                    } else if(field_name == 'practical_marks'){
+                    } else if (field_name == 'practical_marks') {
                         mark.subject.practical_marks = value
-                    }  else if(field_name == 'practical_pass_marks'){
+                    } else if (field_name == 'practical_pass_marks') {
                         mark.subject.practical_pass_marks = value
-                    }           
+                    }
                 }
             })
         })
 
-        
+
     }
 
 
-    addSubject(name,full_marks, pass_marks, practical_marks,practical_pass_marks,theory_marks,theory_pass_marks ){
-        var id = 0; 
+    addSubject(name, full_marks, pass_marks, practical_marks, practical_pass_marks, theory_marks, theory_pass_marks) {
+        var id = 0;
         var alreadyExist = false;
         this.subjects.forEach(subject => {
-            if(parseInt(subject.id) >= id){
+            if (parseInt(subject.id) >= id) {
                 id = parseInt(subject.id) + 1;
             }
-            console.log(subject.name.toString() != name)
-            if(subject.name.toString() != name){
-               
-            }else{
+        
+            if (subject.name.toString() != name) {
+
+            } else {
                 alreadyExist = true;
             }
-            
+
         });
         var subject_new = new Subject()
-        subject_new.init(name,full_marks, pass_marks, practical_marks,practical_pass_marks,theory_marks,theory_pass_marks,id)
-        if(!alreadyExist){
+        subject_new.init(name, full_marks, pass_marks, practical_marks, practical_pass_marks, theory_marks, theory_pass_marks, id)
+        if (!alreadyExist) {
             this.subjects.push(subject_new)
-            this.results.forEach(result =>{
-               result.addMarks(subject_new)
-    
+            this.results.forEach(result => {
+                result.addMarks(subject_new)
+
             })
-        }else{
+        } else {
             alert(`${name} Already Exist !`)
         }
 
-        console.log(this.subjects)
+
     }
 
-    deleteSubject(id){
+    deleteSubject(id) {
 
-            this.subjects.forEach(sub=>{
-                if(sub.id == id){
-                    this.subjects = arrayRemove(this.subjects, sub)
-                }
+        this.subjects.forEach(sub => {
+            if (sub.id == id) {
+                this.subjects = arrayRemove(this.subjects, sub)
+            }
 
-            })
-            this.results.forEach(result =>{
-               result.deleteMarks(id)
-    
-            })
-            console.log(this.subjects)
+        })
+        this.results.forEach(result => {
+            result.deleteMarks(id)
+
+        })
+
     }
 
-    subjectmove(id,new_index){
-        this.subjects = array_move(this.subjects,id,new_index)
-        this.results.forEach(result =>{
-            result.marks = array_move(result.marks,id,new_index)
-         })
+    subjectmove(id, new_index) {
+        this.subjects = array_move(this.subjects, id, new_index)
+        this.results.forEach(result => {
+            result.marks = array_move(result.marks, id, new_index)
+        })
     }
-    
-    deleteStudent(id,token){
+
+    deleteStudent(id, token) {
+        document.getElementById('body').innerHTML = document.getElementById('body').innerHTML + `
+            <div class="dialogue-place" style="display:none" id="dialogue">
+            <div class="dialogue-box" >
+                <b class="dialogue-title">You are about to delete this Student?</b>
+                <p>All the records will be permenently removed and you won't be able to see them again.</p>
+                <div class="dialogue-actions">
+                    <button class="cancel-button" id="cancel-btn-dialogue">cancel</button>
+                    <button class="delete-btn"  id="delete-btn-dialogue">Delete</button>
+                </div>
+            </div>
+        </div>
+        `
         var dialogue = document.getElementById('dialogue')
         var yessbtn = document.getElementById('delete-btn-dialogue')
         var cancelbtn = document.getElementById('cancel-btn-dialogue')
         dialogue.style.display = '';
-        yessbtn.addEventListener('click', ()=>{
-            this.results.forEach(ele=>{
-                if(ele.student.id == id){
-
-                    this.results=arrayRemove(this.results, ele)
+        yessbtn.addEventListener('click', () => {
+            this.results.forEach(ele => {
+                if (ele.student.id == id) {
+                    console.log(ele.student.id == id)
+                    console.log(ele.student.id , id)
+                    this.results = arrayRemove(this.results, ele)
                 }
-                dialogue.style.display = 'none';
+            })
+            dialogue.remove()
                 uiInit(resultsheet)
                 getSubjects(resultsheet)
                 sendUpdate(resultsheet, token)
+                
+        })
+        cancelbtn.addEventListener('click', () => {
+            dialogue.remove()
+        })
 
-            })
-        })
-        cancelbtn.addEventListener('click', ()=>{
-            dialogue.style.display = 'none';
-        })
-        
     }
-    updateStudent(id,token){
+    updateStudent(id, token) {
+        document.getElementById('body').innerHTML = document.getElementById('body').innerHTML + `
+        <div class="dialogue-place" style="display:none" id="update-dialogue">
+        <div class="dialogue-box d-update" >
+            <b class="dialogue-title">Update Student Information</b>
+            <p class="m-0-c">This Update will only affect {{result_info.name}}.</p>
+            <input type="text" placeholder="Update Name" id="student-name-update">
+            <div class="dialogue-actions">
+                <button class="cancel-button" id="cancel-update-btn-dialogue">cancel</button>
+                <button class="update-btn"  id="update-btn-dialogue">Update</button>
+            </div>
+        </div>
+</div>
+        `
         var dialogue = document.getElementById('update-dialogue')
         var yessbtn = document.getElementById('update-btn-dialogue')
         var cancelbtn = document.getElementById('cancel-update-btn-dialogue')
         var text = document.getElementById('student-name-update')
-        this.results.forEach(ele=>{
-            if(ele.student.id == id){
+        this.results.forEach(ele => {
+            if (ele.student.id == id) {
                 text.value = ele.student.name
             }
         })
         dialogue.style.display = '';
-        yessbtn.addEventListener('click', ()=>{
-            this.results.forEach(ele=>{
-                if(ele.student.id == id){
+        yessbtn.addEventListener('click', () => {
+            this.results.forEach(ele => {
+                if (ele.student.id == id) {
                     ele.student.name = text.value
-                    
+
                 }
-                dialogue.style.display = 'none';
-                uiInit(resultsheet)
-                getSubjects(resultsheet)
-                sendUpdate(resultsheet, token)
+                dialogue.remove()
+                uiInit(this)
+                getSubjects(this)
+                sendUpdate(this, token)
 
             })
         })
-        cancelbtn.addEventListener('click', ()=>{
-            dialogue.style.display = 'none';
+        cancelbtn.addEventListener('click', () => {
+            dialogue.remove()
         })
-        
+
     }
 
-    addStudent(students){
+    addStudent(students, token) {
+        
+        document.getElementById('body').innerHTML = document.getElementById('body').innerHTML + `
+        <div class="dialogue-place" style="display:none" id="add-student-dialogue">
+        <div class="dialogue-box d-update" >
+            <b class="dialogue-title">Add Student</b>
+            <p class="m-0-c">Register a new student from <a style="color:#56fc09" href="/register/student/">here</a> And then select</p>
+            <select id="student-add-select"></select>
+            <div class="dialogue-actions">
+                <button class="cancel-button" id="cancel-add-btn-dialogue">cancel</button>
+                <button class="update-btn"  id="add-btn-dialogue">Add</button>
+            </div>
+        </div>
+     </div>
+        `
         var listofst = []
-        students.forEach(student=>{
-            this.results.forEach(result=>{
-                if(student.id == result.student.id){
-                    
-                    listofst=arrayRemove(students, student)
+        students.forEach(student => {
+            var should = true;
+            this.results.forEach(result => {
+                if (student.id.toString() == result.student.id.toString()) {
+
+                    should = false;
                 }
             })
+            if (should) {
+                listofst.push(student)
+            }
+           
         })
 
         var dialogue = document.getElementById('add-student-dialogue')
@@ -234,35 +279,48 @@ class ResultsSheet {
         var docs = document.getElementById('student-add-select')
 
         dialogue.style.display = '';
-       
         var def = document.createElement('option')
         def.innerText = "Select Student";
-
         docs.appendChild(def)
-        listofst.forEach(st=>{
+        listofst.forEach(st => {
             var option = document.createElement('option')
             option.value = st.id
-            option.innerText = st.name
+            option.innerText = st.name + ' (Roll No: ' + st.rollno+')'
             docs.appendChild(option)
         })
 
-        yessbtn.addEventListener('click', ()=>{
+        yessbtn.addEventListener('click', () => {
             var selectedst = null;
-            listofst.forEach(st=>{
-                if(st.id == docs.value){
+            listofst.forEach(st => {
+                if (st.id.toString() == docs.value.toString()) {
                     selectedst = st;
                 }
+
+                
             })
-            var result = new Result()
-            result.init(selectedst, this.subjects)
-            this.results.push(result)
-            uiInit(resultsheet)
-            getSubjects(resultsheet)
-            docs.innerHTML = ''
+            
+            if (selectedst) {
+                var result = new Result()
+                result.init(selectedst, this.subjects)
+                this.results.push(result)
+                uiInit(this)
+                getSubjects(this)
+                sendUpdate(this, token)
+
+                dialogue.remove()
+            }
+
+
         })
-        cancelbtn.addEventListener('click', ()=>{
+        cancelbtn.addEventListener('click', () => {
             dialogue.style.display = 'none';
+            docs.innerHTML = ''
+            dialogue.remove()
         })
+
+
+
+
 
 
     }
@@ -282,15 +340,16 @@ class Result {
         });
     }
 
-    initinstance(data){
+    initinstance(data) {
         var student = new Student()
-        student.init(data['student']['name'],data['student']['rollno'],data['student']['id'],data['student']['section'])
+        student.init(data['student']['name'], data['student']['rollno'], data['student']['id'], data['student']['section'])
+        console.log(typeof data['student']['id'])
         this.student = student
-        data['marks'].forEach(mark=>{
+        data['marks'].forEach(mark => {
             var mark_new = new Marks()
             var subject = new Subject()
-            subject.init(mark['subject']['name'], mark['subject']['full_marks'], mark['subject']['pass_marks'],mark['subject']['practical_marks'],mark['subject']['practical_pass_marks'],mark['subject']['theory_marks'],mark['subject']['theory_pass_marks'],mark['subject']['id'])
-            mark_new.init(subject,mark['theory'],mark['practical'], mark['student'])
+            subject.init(mark['subject']['name'], mark['subject']['full_marks'], mark['subject']['pass_marks'], mark['subject']['practical_marks'], mark['subject']['practical_pass_marks'], mark['subject']['theory_marks'], mark['subject']['theory_pass_marks'], mark['subject']['id'])
+            mark_new.init(subject, mark['theory'], mark['practical'], mark['student'])
             this.marks.push(mark_new)
         })
     }
@@ -300,9 +359,9 @@ class Result {
         this.marks.push(mark)
     }
 
-    deleteMarks(id){
-        this.marks.forEach(ele=>{
-            if(ele.subject.id == id){
+    deleteMarks(id) {
+        this.marks.forEach(ele => {
+            if (ele.subject.id == id) {
                 this.marks = arrayRemove(this.marks, ele)
             }
         })
@@ -315,7 +374,7 @@ class Result {
             elementsfiled = elementsfiled + field.widget()
         })
         return `
-        <div class="result-card" section="${this.student.section}">
+        <div class="result-card" section="${this.student.section}" search-helper-name="${this.student.name}" search-helper-rollno="${this.student.rollno}">
                 <div class="student-info">
                     <b>Obtained</b>
                     <span>${this.student.name}</span>
@@ -340,7 +399,7 @@ class Result {
 }
 
 class Student {
-    init(name, rollno, id,section) {
+    init(name, rollno, id, section) {
         this.name = name;
         this.rollno = rollno;
         this.id = id;
@@ -349,7 +408,7 @@ class Student {
 }
 
 class Subject {
-    init(name, full_marks, pass_marks, practical_marks,practical_pass_marks, theory_marks,theory_pass_marks, id) {
+    init(name, full_marks, pass_marks, practical_marks, practical_pass_marks, theory_marks, theory_pass_marks, id) {
         this.name = name;
         this.full_marks = full_marks;
         this.pass_marks = pass_marks;
@@ -392,10 +451,10 @@ class Marks {
     }
 }
 
-function arrayRemove(arr, value) { 
-    
-    return arr.filter(function(ele){ 
-        return ele != value; 
+function arrayRemove(arr, value) {
+
+    return arr.filter(function (ele) {
+        return ele != value;
     });
 }
 

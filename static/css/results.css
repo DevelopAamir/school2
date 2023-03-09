@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    font-family: "Inter", sans-serif;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -27,7 +31,8 @@ a{
     background-color:  white;
     color:#293462;
     padding: 15px;
-
+    padding-top: 25px;
+    box-shadow: 1px 1px 5px rgb(128 128 128 / 33%);
 }
 
 .nav>h3{
@@ -41,14 +46,16 @@ a{
 }
 
 .nav > div > input{
-    padding: 8px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 9px;
     border: none;
     outline: none;
     margin-right: 10px;
     width: 714px;
-    border: 2px solid #dadada;
+    border: 1px solid #eee;
 }
+
+
 
 .material-symbols-outlined{
     color: #293462;
@@ -62,6 +69,7 @@ a{
     border-radius: 5px;
     display: flex;
     align-items: center;
+    margin-top: 30px;
 }
 
 
@@ -71,6 +79,7 @@ a{
     padding: 15px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .add-sub-btn > .add-icon{
@@ -110,14 +119,15 @@ a{
 }
 
 .actions > button{
-    padding: 8px;
+    padding: 5px;
     font-size: small;
     background-color:#293462;
     color: white;
     border-radius: 5px;
     border: none;
     margin-right: 20px;
-    height: 40px;
+    height: 32px;
+    width: 95px;
 }
 
 .scroll-marks{
@@ -415,4 +425,13 @@ a{
     background-color: rgb(4, 209, 4);
     border: none;
     margin-right: 0px;
+    min-width: 50px
+}
+
+.not_result_msg{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    color: grey;
+    font-size: 25px;
 }

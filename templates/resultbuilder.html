@@ -23,10 +23,8 @@
             {{result_info.name}}
         </h3>
         <div>
-            <input type="text" name="" id="" placeholder="Search students">
-            <a onclick="swithsetting()" class="material-symbols-outlined">
-                settings
-            </a>
+            <input type="text"  name="" oninput="onSearch(this)"  placeholder="Search students">
+        
         </div>
 
     </nav>
@@ -47,7 +45,7 @@
         </div>
         <div class="filters">
             <b>Filters : </b>
-            <select name="" id="" onchange="onfilterbysection(this)">
+            <select name="" id="filter-by-section" onchange="onfilterbysection(this)">
                 <option selected value="">Select Sections</option>
                 {% for section in sections %}
                 <option value="{{section.id}}">{{section}}</option>
@@ -64,7 +62,11 @@
             <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_8zfew9yc.json" background="transparent"
                 speed="2" style="width: 70px; height: 70px;" mode="bounce" loop></lottie-player>
             <button>Export Ledger</button>
-            <button onclick="Result.con()">Export Results</button>
+           
+                <button onclick="window.location.href = '/prepareresult/{{result_info.id}}/{{grade.id}}/'">Export Results</button>
+           
+           
+            <button onclick="swithsetting(this)">Subjects</button>
         </div>
     </div>
     <div class="setting-part" id="settings-part">
@@ -117,29 +119,7 @@
 
                     </thead>
                     <tbody id="subjects">
-                        {% for parent in parents %}
-                        <tr>
-                            <td>
-                                {{forloop.counter }}
-                            </td>
-                            <td>
-                                {{parent.parent_name}}
-                            </td>
 
-                            <td>
-                                {{parent.user}}
-                            </td>
-                            <td>
-                                {{parent.is_active}}
-                            </td>
-                            <td>
-                                <a href="/register/parents?id={{parent.id}}">
-                                    <button>Update</button>
-                                </a>
-                            </td>
-
-                        </tr>
-                        {% endfor %}
 
                     </tbody>
                 </table>
@@ -173,39 +153,12 @@
         </div>
         <div id="resluts-place"></div>
     </div>
-    <div class="dialogue-place" style="display:none" id="dialogue">
-        <div class="dialogue-box" >
-            <b class="dialogue-title">You are about to delete this Student?</b>
-            <p>All the records will be permenently removed and you won't be able to see them again.</p>
-            <div class="dialogue-actions">
-                <button class="cancel-button" id="cancel-btn-dialogue">cancel</button>
-                <button class="delete-btn"  id="delete-btn-dialogue">Delete</button>
-            </div>
-        </div>
-    </div>
-    <div class="dialogue-place" style="display:none" id="update-dialogue">
-        <div class="dialogue-box d-update" >
-            <b class="dialogue-title">Update Student Information</b>
-            <p class="m-0-c">This Update will only affect {{result_info.name}}.</p>
-            <input type="text" placeholder="Update Name" id="student-name-update">
-            <div class="dialogue-actions">
-                <button class="cancel-button" id="cancel-update-btn-dialogue">cancel</button>
-                <button class="update-btn"  id="update-btn-dialogue">Update</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="dialogue-place" style="display:none" id="add-student-dialogue">
-        <div class="dialogue-box d-update" >
-            <b class="dialogue-title">Update Student Information</b>
-            <p class="m-0-c">This Update will only affect {{result_info.name}}.</p>
-            <select id="student-add-select"></select>
-            <div class="dialogue-actions">
-                <button class="cancel-button" id="cancel-add-btn-dialogue">cancel</button>
-                <button class="update-btn"  id="add-btn-dialogue">Add</button>
-            </div>
-        </div>
-    </div>
+    
+   
+    <div id="body"></div>
+
+   
    
 
 </body>
@@ -256,22 +209,97 @@
 
 
     function onfilterbysection(value) {
-        var result_place = document.getElementById('resluts-place').firstChild
+        var result_place = document.getElementById('resluts-place')
+        result_place.firstChild.style.display = ''
         var sectionview = document.getElementById("section_view")
         sectionview.innerText = value.value != "" ? value.options[value.selectedIndex].text : "All"
         var numb = 0
-        result_place.childNodes.forEach((child) => {
+        result_place.firstChild.childNodes.forEach((child) => {
             if (child.nodeName == "DIV") {
                 if (value.value != child.getAttribute("section") && value.value != "") {
                     child.style.display = "none"
-                } else {
+                    child.setAttribute('filtered', '')
+                } else if(!child.hasAttribute('searched')) {
                     child.style.display = ""
+                    child.removeAttribute('filtered')
+                    numb++;
+                }else{
+                    child.removeAttribute('filtered')
                     numb++;
                 }
             }
 
         })
         document.getElementById('total-student').innerText = numb
+        var numbcheck = 0;
+        result_place.firstChild.childNodes.forEach((child) => {
+            if (child.nodeName == "DIV" && child.style.display!='none') {
+                numbcheck++;
+            }
+
+        })
+        if(numbcheck == 0){
+            var to_remove = document.getElementById('not_result_msg')
+            if(!result_place.contains(to_remove)){
+                
+      
+            var not_result_msg = document.createElement('div')
+            not_result_msg.setAttribute('id', 'not_result_msg')
+            not_result_msg.setAttribute('class', 'not_result_msg')
+            not_result_msg.innerHTML = '<b>No Results.</b>'
+            result_place.append(not_result_msg)
+        }
+        }else{
+            var to_remove = document.getElementById('not_result_msg')
+            if(result_place.contains(to_remove)){
+                to_remove.remove()
+            }
+        }
+    }
+
+    function onSearch(field){
+        var result_place = document.getElementById('resluts-place')
+
+        result_place.firstChild.childNodes.forEach((child) => {
+            if (child.nodeName == "DIV") {
+                if (!child.getAttribute('search-helper-name').toLowerCase().includes(field.value.toLowerCase())) {
+                    child.style.display = "none"
+                    child.setAttribute('searched', '')
+                    
+                } else if(!child.hasAttribute('filtered')) {
+                    child.style.display = ""
+                    child.removeAttribute('searched')
+                    
+
+                }else{
+                    child.removeAttribute('searched')
+                }
+            }
+
+        })
+        var numb = 0;
+        result_place.firstChild.childNodes.forEach((child) => {
+            if (child.nodeName == "DIV" && child.style.display!='none') {
+               numb++;
+            }
+
+        })
+        if(numb == 0){
+            var to_remove = document.getElementById('not_result_msg')
+            if(!result_place.contains(to_remove)){
+                var not_result_msg = document.createElement('div')
+                not_result_msg.setAttribute('id', 'not_result_msg')
+                not_result_msg.setAttribute('class', 'not_result_msg')
+                not_result_msg.innerHTML = '<b>No Result.</b>'
+                result_place.append(not_result_msg)
+            }
+            
+        }else{
+            var to_remove = document.getElementById('not_result_msg')
+            if(result_place.contains(to_remove)){
+                to_remove.remove()
+            }
+        }
 
     }
 
@@ -356,14 +384,15 @@
     }
 
     function addStudent(){
-        students = []
+       var students = []
         {% for student in students %}
             var student = new Student()
             student.init('{{student}}', '{{student.roll_no}}', '{{student.id}}', '{{student.section.id}}')
             students.push(student)
         {% endfor %}
-
-        resultsheet.addStudent(students)
+        
+        resultsheet.addStudent(students,'{{csrf_token}}')
+        console.log(resultsheet)
     }
     
 

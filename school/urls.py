@@ -23,4 +23,5 @@ urlpatterns = [
     path('routine', views.routine, name='routine'),
     path('results', views.results, name='results'),
     path('resultbuilder/<int:id>/<int:grade>/', views.resultbuilder, name='resultbuilder'),
+    path('prepareresult/<int:id>/<int:grade>/', views.prepareresult, name='prepareresult'),
 ]

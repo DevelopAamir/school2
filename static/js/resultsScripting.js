@@ -8,7 +8,8 @@ function uiInit(resultsSheet) {
      });
      document.getElementById('subject-count').innerHTML = resultsSheet.subjects.length;
      result_place.appendChild(resultsSheet.widget())
-    
+    var filter = document.getElementById('filter-by-section')
+    onfilterbysection(filter)
 }
 
 

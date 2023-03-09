@@ -312,3 +312,21 @@ def resultbuilder(request,id,grade):
     sections = getSections(request,grade)
     context = {'school': school,'result_info': result, 'grade': grade_, 'students': students, 'subjects': subjects,'results': json.dumps(result.resultsheet),"sections": sections}
     return render(request, 'resultbuilder.html', context)
+
+
+
+@login_required(login_url='/login')
+def prepareresult(request,id,grade):
+    school = getschool(request)
+    result = Result.objects.get(id=id)
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        result.resultsheet = body
+        result.save()
+        return JsonResponse('Updated' , safe=False)
+    grade_ = Class.objects.get(id=grade)
+    students = getStudents(request,grade)
+    subjects = getSubjects(request,grade)
+    sections = getSections(request,grade)
+    context = {'school': school,'result_info': result, 'grade': grade_, 'students': students, 'subjects': subjects,'results': json.dumps(result.resultsheet),"sections": sections}
+    return render(request, 'prepareresult.html', context)
