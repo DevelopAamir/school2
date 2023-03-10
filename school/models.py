@@ -139,6 +139,8 @@ class Result(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=True, unique=True, editable=False)
     school =  models.ForeignKey(School, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=255)
+    full_marks = models.IntegerField(null=True)
+    pass_marks = models.IntegerField(null=True)
     grade = models.ForeignKey(Class, on_delete=models.CASCADE, null=True)
     resultsheet = models.JSONField(null=True, default=defaultsheet())
     date_created = models.DateField(auto_now=True, blank=True)

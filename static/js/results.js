@@ -442,10 +442,12 @@ class Marks {
     }
 
     widget() {
+        var theory_border_color =  this.theory == '' ? '2px solid white' : this.subject.theory_pass_marks > this.theory ? '2px solid red' : this.subject.theory_marks == this.theory ? '2px solid #90EE90' : '2px solid white'
+        var practical_border_color = this.practical == '' ? '2px solid white':this.subject.practical_pass_marks > this.practical ? '2px solid red' : this.subject.practical_marks == this.practical ? '2px solid #90EE90' : '2px solid white'
         return `
         <div class="number-chip">
-            <input type="number" placeholder="TH"  onchange="onupdate(${this.student.id}, ${this.subject.id}, this.value, 'th')" value=${this.theory}>
-            <input type="number" placeholder="PR"  onchange="onupdate(${this.student.id}, ${this.subject.id}, this.value, 'pr')" value=${this.practical}>
+            <input type="number" placeholder="TH" max="${this.subject.theory_marks}" pass-marks-should="${this.subject.theory_pass_marks}" style="border:${theory_border_color}"  onchange="checknubervalidity(this); onupdate(${this.student.id}, ${this.subject.id}, this.value, 'th');" value=${this.theory}>
+            <input type="number" placeholder="PR" max="${this.subject.practical_marks}" pass-marks-should="${this.subject.practical_pass_marks}" style="border:${practical_border_color}"   onchange="checknubervalidity(this); onupdate(${this.student.id}, ${this.subject.id}, this.value, 'pr');" value=${this.practical}>
         </div>
         `
     }

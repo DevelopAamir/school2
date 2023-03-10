@@ -209,7 +209,7 @@ body {
 
 .icon{
     margin-right: 20px;
-    height: 30px;
+    height: 28px;
     transition: 0.5s;
 }
 
@@ -223,6 +223,7 @@ body {
     align-content: stretch;
     flex-direction: row;
     align-items: flex-end;
+    font-size: 20px;
 }
 
 .tb{

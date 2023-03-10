@@ -15,6 +15,7 @@ thead {
 .table {
     margin: 40px;
     width: calc(100% - 80px);
+    font-size: 14px;
 }
 .options{
     display: flex;
@@ -41,7 +42,13 @@ hr{
     border: 2px #ffffff solid;
     padding: 5px;
     font-size: 12px;
+    outline: none ;
 }
+
+.searchfiled:focus{
+    outline: 2px solid rgb(138, 185, 255);
+}
+
 .table-actions{
     display: flex;
     flex-direction: row;

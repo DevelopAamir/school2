@@ -1,0 +1,142 @@
+.result-sheet{
+    background-color: #eee;
+    padding: 15px;
+    margin: 25px;
+    border-radius: 5px;
+    
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.about-result{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+b{
+    color: #293462;
+}
+
+.dateandpercent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.arrow-down{
+    display: flex;
+    flex-direction: column-reverse;
+    color: white
+}
+
+h2{
+    margin: 25px;
+    color: #293462;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.about-result > b{
+    font-size: 20px;
+}
+.subjects-area{
+    display: flex;  
+    color: white;
+    margin-top: 15px;
+    font-size: 12px;
+
+}
+.subjects{
+    display: flex;
+    width:max-content;
+    color: black
+}
+
+.subject-card{
+    display: flex;
+}
+
+
+
+.subjects > div{
+   
+    width: 100px;
+    margin-right: 10px;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subjects-area-btn{
+    background-color: #293462;
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+.lg-sub{
+    font-weight: 100;
+    width: 130px;
+    justify-content: flex-start;
+    padding: 0px 10px;
+}
+
+
+p{
+    color: #8E8C8C;
+    margin-left: 25px;
+    font-size: 12px;
+
+}
+
+input{
+    width: 50px;
+    border: none;
+    outline: none;
+    text-align: center;
+    height: 20px;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+input:focus{
+    outline: 2px solid blue;
+    border-radius: 2px;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.nav{
+padding: 25px;
+}
+
+button{
+    margin-right: 25px;
+}
+
+.p-5{
+    margin-left: 10px;
+    background-color: #8E8C8C;
+    height: unset;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+.head-sub{
+    font-size: 13px;
+    font-weight: 600;
+    overflow: hidden;
+}

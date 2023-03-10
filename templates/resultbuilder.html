@@ -63,7 +63,7 @@
                 speed="2" style="width: 70px; height: 70px;" mode="bounce" loop></lottie-player>
             <button>Export Ledger</button>
            
-                <button onclick="window.location.href = '/prepareresult/{{result_info.id}}/{{grade.id}}/'">Export Results</button>
+            <button id="prepare-result-export" onclick="window.location.href = '/prepareresult/{{result_info.id}}/{{result_info.grade.id}}/'">Export Results</button>
            
            
             <button onclick="swithsetting(this)">Subjects</button>
@@ -192,7 +192,7 @@
 
         {% for subject in subjects %}
         var subject = new Subject()
-        subject.init('{{subject}}', 100, 40, 25, 8, 75, 32, '{{subject.id}}')
+        subject.init('{{subject}}', '{{result_info.full_marks}}', '{{result_info.pass_marks}}', '{{result_info.full_marks}}' * 25/ 100, ('{{result_info.full_marks}}' * 25/ 100) * 40 / 100, '{{result_info.full_marks}}' * 75/ 100, ('{{result_info.full_marks}}' * 75/ 100) * 40 / 100, '{{subject.id}}')
         subjects.push(subject)
         {% endfor %}
 
@@ -394,7 +394,23 @@
         resultsheet.addStudent(students,'{{csrf_token}}')
         console.log(resultsheet)
     }
-    
+    function checknubervalidity(field){
+        console.log(field.value , field.getAttribute('pass-marks-should'), parseInt(field.value) < field.getAttribute('pass-marks-should'))
+        if(parseInt(field.value)  < field.getAttribute('pass-marks-should')){
+      
+            field.style.border = '2px solid red'
+        } else if(parseInt(field.value)  == field.getAttribute('max')){
+            field.style.border = '2px solid #90EE90'
+         
+        } else if(parseInt(field.value)  > field.getAttribute('max')){
+            field.value = ''
+            field.style.border = '2px solid white'
+       
+        }else{
+            field.style.border = '2px solid white'
+ 
+        }
+    }
 
 </script>
 
